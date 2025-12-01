@@ -1,0 +1,42 @@
+# Estructura propuesta:
+
+# FASE 1: Preparación de datos
+# - Encoding categóricas (One-Hot vs Target vs Ordinal)
+# - Feature Engineering temporal (lags, rolling means, estacionalidad)
+# - Scaling para modelos sensibles
+
+# FASE 2: Modelos Base
+# 1. Regresión Lineal/Regularizada (baseline interpretable)
+# 2. Random Forest (captura no linealidades)
+# 3. XGBoost (performance optimizada)
+
+# FASE 3: Series de Tiempo
+# 4. Prophet para tendencias y estacionalidad agregada
+# 5. ARIMA para patrones específicos
+
+# FASE 4: Ensemble/Híbrido
+# 6. Combinación ponderada de mejores modelos
+
+# Tendencias y estacionalidad
+- month, quarter, day_of_week, day_of_month
+- lags (ventas_mes_anterior, ventas_misma_semana_año_anterior)
+- rolling_means (promedio_3_meses, promedio_6_meses)
+- estacionalidad_categoria (patrón específico por categoría)
+# Estrategias según cardinalidad:
+- Región (6 valores) → One-Hot Encoding
+- Categoría (8 valores) → One-Hot Encoding  
+- Método_Pago (5 valores) → One-Hot Encoding
+- Producto (38 valores) → Target Encoding o Frequency Encoding
+- Cliente (326 valores) → Clustering o Target Encoding
+# PCA/Factor Analysis si:
+- Muchas variables correlacionadas post-encoding
+- Problema de dimensionalidad (>100 features)
+- Queremos reducir ruido
+
+# En nuestro caso:
+- Evaluar después del encoding (probablemente ~60 features)
+- PCA si multicolinealidad alta entre regiones/categorías
+# TARGETS DEFINIDOS:
+# TARGET 1 (Prioridad Alta): demanda_semanal_categoria_region
+# TARGET 2 (Prioridad Media): ingresos_mensuales_total  
+# TARGET 3 (Prioridad Media): cantidad_semanal_top10_productos
