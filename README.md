@@ -45,4 +45,4 @@ This project is developed for academic purposes as part of course MA2003B.
 
 ## Authors
 
-Mario, Sofia Knutas (A01831481), Kristina, Renato
+Mario Gaitan, Sofia Knutas, Kristina Stapnes, Renato Castillo
