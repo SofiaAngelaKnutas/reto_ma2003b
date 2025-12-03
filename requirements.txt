@@ -1,7 +1,9 @@
 pandas
+numpy
 pyarrow
 matplotlib
 seaborn
-numpy
 scikit-learn
+xgboost
+optuna
 ipykernel
